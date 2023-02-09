@@ -1,12 +1,45 @@
 
-import React from 'react'
+import ItemList from "../ItemList/ItemList"
+import { products } from "../../ProductsMock";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const ItemListContainer = (props) => {
+
+const ItemListContainer = () => {
+
+    const { categoryName } = useParams();
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const productsFiltered = products.filter(
+      (product) => product.category === categoryName
+    );
+
+    const task = new Promise((resolve, reject) => {
+      resolve(categoryName ? productsFiltered : products);
+
+      // reject(errorMessage);
+    });
+
+    task
+      .then((res) => {
+        setItems(res);
+      })
+      .catch((error) => {
+        console.log("aca se rechazo: ", error);
+      });
+  }, [categoryName]);
+
+
+
+
   return (
     <div>
-      <h3>¡Bienvenido {props.usuario} {props.apellido} a la comunidad de Big Bear!</h3>
+      <ItemList items={items} />
     </div>
   )
 }
 
 export default ItemListContainer
+

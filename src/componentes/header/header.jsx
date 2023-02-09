@@ -1,6 +1,6 @@
-import Navbar from "../Navbar/Navbar"
-import logo from "../assets/Imagenes/logo.png"
+
 import CartWidget from "../CartWidget/CartWidget"
+import Navbar from "../Navbar/Navbar"
 
 
 const Header = () => {
@@ -11,8 +11,8 @@ const Header = () => {
        justifyContent:"space-between",
        alignItems: "center"
        }}>
-        <img src={logo} alt="logo" style={{ height: "20vh"}} />
-        <Navbar />
+        <img src="https://res.cloudinary.com/dyxviqtpy/image/upload/v1675975818/logo_k4nwqn.png" alt="logo" style={{ height: "20vh"}} />
+        <Navbar/>
         <CartWidget />
 
         </div>

@@ -1,19 +1,19 @@
 
+import React from 'react'
+import ListNavbar from '../ListNavbar/ListNavbar'
+import "./Navbar.css"
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
-
-    return (
-        <ul style={{
-            listStyleType: "none",
-            display:"flex",
-            fontFamily: "sans-serif",
-            fontSize: "20px",}}>
-            <li style={{marginRight: "10px"}}> <a href="http://localhost:3000/"> CARPAS </a></li>
-            <li style={{marginRight: "10px"}}><a href="http://localhost:3000/"> MOCHILAS</a></li>
-            <li style={{marginRight: "10px"}}><a href="http://localhost:3000/"> ACCESORIOS </a></li>
-        </ul>
-    )
+  return (
+    <ul className='categoria'>
+        <Link to="/category/carpas"><ListNavbar title="CARPAS"/></Link>
+        <Link to="/category/mochilas"><ListNavbar title="MOCHILAS"/></Link>
+        <Link to="/category/accesorios"><ListNavbar title="ACCESORIOS"/></Link>
+        <Link to="/"><ListNavbar title="TODO"/></Link>
+    </ul>
+  )
 }
 
 export default Navbar
