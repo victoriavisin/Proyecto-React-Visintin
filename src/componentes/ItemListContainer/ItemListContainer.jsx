@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
 
-    const { categoryName } = useParams();
+    const {categoryName} = useParams();
 
   const [items, setItems] = useState([]);
 
@@ -19,7 +19,6 @@ const ItemListContainer = () => {
     const task = new Promise((resolve, reject) => {
       resolve(categoryName ? productsFiltered : products);
 
-      // reject(errorMessage);
     });
 
     task
@@ -27,7 +26,6 @@ const ItemListContainer = () => {
         setItems(res);
       })
       .catch((error) => {
-        console.log("aca se rechazo: ", error);
       });
   }, [categoryName]);
 
