@@ -1,0 +1,90 @@
+
+@font-face {
+    font-family: "roboto";
+    src: url(../../assets/fonts/Roboto-Thin.ttf);
+ }
+
+
+ .carrito-vacio {
+    font-family: "roboto";
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+    text-align: center;
+    margin-left: 500px;
+ }
+
+ .cart-container{
+    width: 100%;
+    padding: 50px 0;
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+
+.cart-container{
+    width: 100%;
+    padding: 50px 0;
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.container-items{
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 0 40px;
+}
+
+
+.cart-item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    align-items: center;
+    box-shadow: 0px 2px 5px 0px #e68c05;
+    border-radius: 30px;
+    padding: 0 10px;
+
+}
+
+.cart-item  img{
+    width: 10%;
+    height: 150px;
+    
+}
+
+.cart-item-info{
+    width: 80%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: orangered;
+    font-family: "roboto";
+      
+}
+
+.total {
+    color: orangered;
+    font-family: "roboto";
+    font-style: bold;
+
+}
+
+
+
+
+
+
+

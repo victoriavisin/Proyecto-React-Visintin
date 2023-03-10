@@ -1,0 +1,10 @@
+.cantidad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover {
+    border: 5px solid white
+    
+}

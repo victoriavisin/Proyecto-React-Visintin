@@ -36,12 +36,13 @@ import React from 'react'
               {element.description}
             </Typography>
             <Typography variant="body1" color="secondary" align="center">
-              ${element.price}.-
+              ${element.price}
             </Typography>
           </CardContent>
           <CardActions style={{ display: "flex", justifyContent: "center" }}>
             <Link to={`/itemDetail/${element.id}`}>
               <Button
+                
                 size="large"
                 variant="contained"
                 sx={{ textTransform: "none" }}

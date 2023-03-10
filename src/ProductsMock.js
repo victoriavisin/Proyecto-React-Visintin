@@ -22,7 +22,7 @@ export  const products = [
         title: "Bolsa de dormir Waterdog Highland",
         price: 14900,
         stock: 3,
-        description: "Está diseñado para los vivacs de montaña dando resistencia y regulación superior.",
+        description: "Está diseñado para los vivacs de montaña dando resistencia y regulación superior",
         category: "accesorios",
         img: "https://res.cloudinary.com/dyxviqtpy/image/upload/v1675957115/bolsa-para-dormir-campamento-1_ne05ji.jpg"
     }

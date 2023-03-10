@@ -1,32 +1,58 @@
 
 import ItemList from "../ItemList/ItemList"
-import { products } from "../../ProductsMock";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+//IMPORTAR BASE DE DATOS
+import {db} from "../../firebaseConfig"
+import {getDocs, collection, query, where} from "firebase/firestore"
 
 
 const ItemListContainer = () => {
 
-    const {categoryName} = useParams();
+  const {categoryName} = useParams()
+  const [item, setItems] = useState ([])
 
-  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const productsFiltered = products.filter(
-      (product) => product.category === categoryName
-    );
 
-    const task = new Promise((resolve, reject) => {
-      resolve(categoryName ? productsFiltered : products);
+    const itemCollection = collection(db , "products")
+    
 
-    });
 
-    task
-      .then((res) => {
-        setItems(res);
+    if (categoryName) {
+
+      const q = query (itemCollection, where ("category","==", categoryName))
+
+      getDocs(q)
+    .then( (res) => {
+      const products = res.docs.map( product => {
+        return {
+          ...product.data(),
+          id: product.id
+        }
       })
-      .catch((error) => {
-      });
+      setItems(products)
+    })
+    .catch((err) => console.log ("error:" + err))
+      
+    } else {
+      getDocs(itemCollection)
+    .then( (res) => {
+      const products = res.docs.map( product => {
+        return {
+          ...product.data(),
+          id: product.id
+        }
+      })
+      setItems(products)
+    })
+    .catch((err) => console.log ("error:" + err))
+      
+    }
+
+    
+    
   }, [categoryName]);
 
 
@@ -34,7 +60,7 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      <ItemList items={items} />
+      <ItemList items={item} />
     </div>
   )
 }
