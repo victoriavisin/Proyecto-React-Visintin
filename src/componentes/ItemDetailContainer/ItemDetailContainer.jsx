@@ -7,6 +7,8 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 
 
 
+
+
 import {db} from "../../firebaseConfig"
 import {getDoc, collection, doc} from "firebase/firestore"
 import "./ItemDetailContainer.css"
@@ -37,9 +39,13 @@ const ItemDetailContainer = () => {
 
 
   return (
-    <ItemDetail product={product} />
-  )
-}
+    <div>
+    
+ <ItemDetail product={product} />
 
+  </div>
+);
+};
+    
 export default ItemDetailContainer
 

@@ -1,22 +1,15 @@
 import { Button } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./Cart.css";
-
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
-
-
-import FormCheckOut from "../FormCheckOut/FormCheckOut";
-import FinishBuy from "../FinishBuy/FinishBuy";
 
 const Cart = () => {
-  const { cart, clearCart, deleteProductById, getTotalPrice } =
+  const { cart,clearCart,deleteProductById, getTotalPrice} =
     useContext(CartContext);
-
-  const [buy, setBuy] = useState(false);
-  const [orderId, setOrderId] = useState(null);
 
 
   const AlertaLimpiarCarrito = () => {
@@ -32,22 +25,17 @@ const Cart = () => {
         Swal.fire("¡Carrito se borro con exito!", "", "success");
         clearCart();
       } else if (result.isDenied) {
-        Swal.fire("No se borro el carrito", "", "info");
+        Swal.fire("No se borro el carrito", "", "success");
       }
     });
   };
 
   const total = getTotalPrice();
 
-  if (orderId) {
-    return (
-      <FinishBuy orderId={orderId} />
-    );
-  }
 
   return (
     <div>
-      {!buy ? (
+      
         <div className="cart-container">
           {cart.length < 1 ? (
             <h1 className="carrito-vacio">¡EL CARRITO ESTA VACIO!</h1>
@@ -64,31 +52,32 @@ const Cart = () => {
                     
                     <Button variant="outlined" color="error" onClick={() => deleteProductById(product.id)}>
                       BORRAR</Button>
+                      
                   </div>
-                    </div>
+                  </div>
+                    
                 );
               })}
+
               <h1 className="total">Total a pagar: ${total}</h1>
-              <Button variant="contained" onClick={() => setBuy(true)}>
-                  Finalizar Compra
+              <div className="btn">
+              <Button variant="contained">
+                PAGAR
                 </Button>
                 <Button onClick={() => AlertaLimpiarCarrito()} variant="contained">
                   Vaciar carrito
                 </Button>
+                <Button variant="contained">
+                <Link to="/">Seguir comprando</Link>
+                </Button>
+                </div>
             </div>
           )}
 
           
         </div>
-      ) : (
-        <FormCheckOut
-          cart={cart}
-          total={total}
-          clearCart={clearCart}
-          setOrderId={setOrderId}
-        />
-      )}
-    </div>
+  
+  </div>
   );
 };
 

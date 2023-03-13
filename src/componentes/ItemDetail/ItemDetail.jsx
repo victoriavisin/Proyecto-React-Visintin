@@ -5,7 +5,6 @@ import { CartContext } from "../../context/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
 import  "./ItemDetail.css"
 
-import Swal from 'sweetalert2'
 
 const ItemDetail = ({ product }) => {
 
@@ -20,10 +19,7 @@ const ItemDetail = ({ product }) => {
 
     addToCart( obj )
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Se agrego el producto al carrito',
-    })
+    
   };
 
   const quantity = getQuantityById(product.id)

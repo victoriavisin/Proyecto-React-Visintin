@@ -1,6 +1,7 @@
 
 
 import React from 'react'
+import "./ProductoCard.css"
 
 
     import {
@@ -15,17 +16,18 @@ import React from 'react'
     
     const ProductoCard = ( { element } ) => {
       return (
-        <Card sx={{ maxWidth: 345 }}>
+
+        <Card className='card' sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             height="200"
             image={element.img}
             alt="imagen producto"
           />
-          <CardContent>
-            <Typography
+          <CardContent className='contenido-card'>
+            <Typography className='letra'
               gutterBottom
-              variant="h5"
+              variant="h4"
               component="div"
               color="primary"
               align="center"
@@ -52,6 +54,7 @@ import React from 'react'
             </Link>
           </CardActions>
         </Card>
+        
   )
 }
 

@@ -2,6 +2,9 @@
 import ItemList from "../ItemList/ItemList"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./ItemListContainer.css"
+import Spinner from "../Spinner/spinner"
+
 
 //IMPORTAR BASE DE DATOS
 import {db} from "../../firebaseConfig"
@@ -60,10 +63,15 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      <ItemList items={item} />
+      {item.length < 1 ? (
+      <Spinner/>
+      ) : (
+  <ItemList items={item} />
+  )}
     </div>
-  )
-}
+  );
+};
+
 
 export default ItemListContainer
 

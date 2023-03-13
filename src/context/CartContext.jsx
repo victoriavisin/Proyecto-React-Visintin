@@ -1,10 +1,27 @@
-import { useState, createContext } from "react"
+import { useState, createContext, useEffect } from "react"
+
 
 export const CartContext  = createContext()
+
+
+
 
 const CartContextProvider = ( {children} ) => {
 
     const [cart, setCart] = useState([])
+
+
+    useEffect(() => {
+      const cartLS = JSON.parse(localStorage.getItem('cart')) ?? []
+      setCart(cartLS)
+
+    
+    }, [])
+    
+    //dependencia el carrito, cada vez q el carrito cambie se sicroniza con el localstorage
+     useEffect(() => {
+       localStorage.setItem('cart', JSON.stringify(cart))
+     }, [cart])
 
     
     const addToCart = ( product )=>{
@@ -39,7 +56,6 @@ const CartContextProvider = ( {children} ) => {
     const deleteProductById = ( id )=>{
 
       let newCart = cart.filter( product => product.id !== id)
-
       setCart(newCart)
 
     }
