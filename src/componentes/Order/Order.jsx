@@ -4,6 +4,7 @@ import "./Order.css"
 import Button from '@mui/material/Button';
 
 
+
 const Order = ({ordenId}) => {
   return (
     <div className='orden'>
@@ -14,6 +15,7 @@ const Order = ({ordenId}) => {
         <Button variant="contained">
            <Link to="/">Seguir comprando</Link>
       </Button>
+  
     </div>
     
       
