@@ -3,6 +3,9 @@ import "./FormCheckout.css"
 import {addDoc,collection,updateDoc,doc} from "firebase/firestore"
 import {db} from "../../firebaseConfig"
 import Swal from "sweetalert2";
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+
 
 const FormCheckout = ({cart,total,clearCart,setOrdenId}) => {
 
@@ -40,18 +43,34 @@ const FormCheckout = ({cart,total,clearCart,setOrdenId}) => {
      Swal.fire({
          icon: 'success',
          title: 'Se realizo la compra',
+         text: "En breve nos comunicaremos a su email",
        })
     }
+
+    
     
     return (
-        <div className="form">
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder='Ingrese su Apellido' name ="apellido" onChange={(e)=> setUsuario({...usuario, apellido: e.target.value})} />
-            <input type="text" placeholder='Ingrese su Nombre' name ="nombre" onChange={(e)=> setUsuario ({...usuario, nombre: e.target.value})}/>
-            <input type="text" placeholder='Ingrese su correo electrónico' name ="email" onChange={(e)=>setUsuario ({...usuario, email: e.target.value})}/>
-            <button onClick={() => AlertaComprar()}>COMPRAR</button>
 
-        </form>
+        
+        <div className="form">
+          <h2>Complete el formulario para efectuar la compra:</h2>
+
+          <Box onSubmit={handleSubmit}
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+          <TextField id="outlined-basic" label="Ingrese su apellido" variant="outlined" name ="apellido" onChange={(e)=> setUsuario({...usuario, apellido: e.target.value})} />
+          <TextField id="outlined-basic" label="Ingrese su nombre" variant="outlined" name ="nombre" onChange={(e)=> setUsuario({...usuario, nombre: e.target.value})} />
+          <TextField id="outlined-basic" label="Ingrese su email" variant="outlined" name ="email" onChange={(e)=> setUsuario({...usuario, email: e.target.value})} />
+          <button onClick={() => AlertaComprar()}>COMPRAR</button>
+          
+    </Box>
+          
+   
       
     </div>
   )

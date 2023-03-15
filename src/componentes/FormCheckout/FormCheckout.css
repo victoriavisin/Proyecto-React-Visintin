@@ -1,9 +1,18 @@
+@font-face {
+    font-family: "roboto";
+    src: url(../../assets/fonts/Roboto-Thin.ttf);
+ }
+
+
 .form {
     width: 100%;
     height: 400px;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 20px;
     padding-top: 200px;
+    justify-content:space-evenly;
+    font-family: "roboto";
+    
 }
+
